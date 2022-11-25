@@ -16,4 +16,16 @@ let changedData = getReportRuleListData?.map((item:any)=>{
 // improved
 
 arr.reduce( (acc, { children, ...rest }) => [...acc, { ...rest, child: children }], [] )
+
+// ramda improved
+import { map, compose, dissoc, assoc, prop, curry } from "ramda";
+let a = [{ children: 1, t: "a" }];
+let switchField = curry((fieldB, fieldA, item) => {
+  return compose(
+    dissoc(fieldB), 
+    assoc(fieldA, prop(fieldB)(item))
+  )(item);
+});
+let copyChildrenToChild = switchField("children", "child");
+let b = map(copyChildrenToChild, a);
 ```
