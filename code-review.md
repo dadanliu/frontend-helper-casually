@@ -1,25 +1,15 @@
 # js
 
-### change attr field to another
-case
+### change target field to other field and remove target field
 ```js
-let changedData = getReportRuleListData?.map((item:any)=>{
-       let {children,...rest}=item;
-       children=children?.map((item)=>{
-         return {
-           ...item,
-           key:item.id
-         }
-       })
-       return {...rest,child:children, key:item?.ruleId.toString()}})
+let arr = [{ children: 1, t: "a" }];
 
 // improved
-
 arr.reduce( (acc, { children, ...rest }) => [...acc, { ...rest, child: children }], [] )
 
 // ramda improved
 import { map, compose, dissoc, assoc, prop, curry } from "ramda";
-let a = [{ children: 1, t: "a" }];
+
 let switchField = curry((fieldB, fieldA, item) => {
   return compose(
     dissoc(fieldB), 
