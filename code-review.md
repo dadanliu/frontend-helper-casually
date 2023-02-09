@@ -29,3 +29,11 @@ let switchField = curry((fieldB, fieldA, item) => {
 let copyChildrenToChild = switchField("children", "child");
 let b = map(copyChildrenToChild, a);
 ```
+
+### css
+
+```js
+style={formData.noticeStatus?{}:{position:'relative',top:'-4px'}}
+这里使用classname 那个包，去看看
+classname({className:formData.noticeStatus},baseClassName)
+```
